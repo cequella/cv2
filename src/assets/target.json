@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Cumbuco",
+    "coord": [-38.7499, -3.6196],
+    "weight": 15.7,
+    "dead": [
+      { "kind": "ave", "amount": 1}
+    ],
+    "comparation": [
+      { "kind": "fusca 1600", "amount": 20 }
+    ]
+  }
+
+]
