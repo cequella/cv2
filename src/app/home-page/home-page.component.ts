@@ -6,7 +6,6 @@ import {
   ElementRef
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 
@@ -18,11 +17,11 @@ export class Tuple {
   amount: number;
 }
 export class Occurrence {
-  comparation: Tuple[];
-  coord: number[];
-  dead: Tuple[];
   name: string;
-  weight: number;
+  coord: number[];
+  weight: string;
+  dead: Tuple[];
+  comparation: Tuple[];
 }
 
 @Component({
@@ -41,14 +40,14 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    let getter = this.http.get('assets/target.json');
-    let subscriber = getter.subscribe(
-        (content: Occurrence[]) => {
-          this.data = content;
-          debugger;
-          subscriber.unsubscribe();
-        }
-    )
+    let getter = this.http.get('assets/target.json').toPromise().then(
+      (content) => {
+        this.data = content;
+        this.onContentLoad();
+      }
+    ).catch(
+      (err) => console.log(err)
+    );
   }
 
   ngAfterViewInit() {
@@ -58,7 +57,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       style: 'mapbox://styles/mapbox/streets-v9',
       center: [-38.7499, -3.6196],
       zoom: 7,
-      minZoom: 12,
+      minZoom: 0,
       maxZoom: 18,
     });
 
@@ -69,38 +68,21 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.map.addControl(new ZoomControl(), 'top-right');
     this.map.on('mousemove', (event) => this.onMouseMove(event));
     this.map.on('load', () => this.onLoad());
-
-    //this.createOilMarker(this.data[0]);
   }
 
   onMouseMove(event) {
   }
 
   onLoad() {
+  }
+
+  onContentLoad() {
     let link = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png';
     this.map.loadImage(link,
       (error, image) => {
         if (error) throw error;
         this.createOilStain(image, "target")
       });
-  }
-
-  private createOilMarker(occurrence: Occurrence) {
-    let comparation = occurrence.comparation
-                                  .map(x => "<il>"+x.amount+" "+x.kind+"</il>")
-                                  .reduce((o,c) => o+c);
-    this.popup
-      .setLngLat(occurrence.coord)
-      .setHTML(`
-        <h1>${occurrence.name}</h1>
-        <p><strong>Quantidade:</strong> ${occurrence.weight} ton</p>
-        <p><strong>Que equivalem a:</strong></p>
-        <ul>
-        ${comparation}
-        </ul>
-        <button>Limpar</button>
-        `)
-      .addTo(this.map);
   }
 
   private createOilStain(image, layerName) {
@@ -128,7 +110,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       (event) => {
         let a = this.map.queryRenderedFeatures(event.point, { layers: [layerName] });
         console.log(a[0]);
-        //console.log(event);
     });
   }
 
@@ -141,5 +122,26 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         coordinates: target.coord
       },
     };
+  }
+
+  private showOilContent(occurrence: Occurrence) {
+    console.log(occurrence);
+    /*
+    let comparation = occurrence.comparation
+                                  .map(x => "<il>"+x.amount+" "+x.kind+"</il>")
+                                  .reduce((o,c) => o+c);
+    this.popup
+      .setLngLat(occurrence.coord)
+      .setHTML(`
+        <h1>${occurrence.name}</h1>
+        <p><strong>Quantidade:</strong> ${occurrence.weight} ton</p>
+        <p><strong>Que equivalem a:</strong></p>
+        <ul>
+        ${comparation}
+        </ul>
+        <button>Limpar</button>
+        `)
+      .addTo(this.map);
+      */
   }
 }

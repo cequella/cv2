@@ -1,13 +1,152 @@
 [
   {
-    "name": "Cumbuco",
+    "name": "Caucaia: Cumbuco e Barra do Cauípe",
     "coord": [-38.7499, -3.6196],
-    "weight": 15.7,
+    "weight": "15.7 toneladas",
     "dead": [
       { "kind": "ave", "amount": 1}
     ],
     "comparation": [
       { "kind": "fusca 1600", "amount": 20 }
+    ]
+  },
+
+  {
+    "name": "Amontada",
+    "coord": [-39.654319, -3.024158],
+    "weight": "4 Kg de resíduos de óleo",
+    "dead": [
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Barroquinha: Bitupitá",
+    "coord": [-41.273404, -2.8933544],
+    "weight": "Não quantificada",
+    "dead": [
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Jericoacoara: Praia da Malhada",
+    "coord": [-40.51819, -2.790211],
+    "weight": "Não quantificada",
+    "dead": [
+      { "kind": "Tartaruga marinha", "amount": 1}
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Paraipaba: Praia da Lagoinha",
+    "coord": [-39.141380, -3.345373],
+    "weight": "Não quantificada",
+    "dead": [
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Paracuru: Praia do Paracuru",
+    "coord": [-39.031123, -3.407415],
+    "weight": "1 tonelada",
+    "dead": [
+      { "kind": "Tartaruga marinha", "amount": 4}
+    ],
+    "comparation": [
+      { "kind": "fusca 1600", "amount": 1 }
+    ]
+  },
+
+  {
+    "name": "São Gonçalo do Amarante: Praia da Taíba",
+    "coord": [-38.894677, -3.506282],
+    "weight": "Não quantificada",
+    "dead": [
+      { "kind": "Tartaruga marinha", "amount": 4},
+      { "kind": "Golfinho", "amount": 1}
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Fortaleza: Praia do Futuro, Sabiaguaba e Cofeco",
+    "coord": [-38.460092, -3.724030],
+    "weight": "500 litros de resíduos coletados",
+    "dead": [
+      { "kind": "Tartaruga marinha", "amount": 14}
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Aquiraz: Praia da Prainha, Barro Preto e Praia do Japão",
+    "coord": [-38.348813, -3.897001],
+    "weight": "Não quantificada",
+    "dead": [
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Cascavel: Caponga e Barra Velha",
+    "coord": [-38.197936, -4.037994],
+    "weight": "Não quantificada",
+    "dead": [
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Beberibe: Morro Branco, Barra de Sucatinga, Parajuru, Tabubinha e Praia das Fontes",
+    "coord": [-37.868942, -4.369748],
+    "weight": "100 Kg de resíduos coletados",
+    "dead": [
+      { "kind": "Tartaruga marinha", "amount": 1 }
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Fortim: Pontal de Maceió",
+    "coord": [-37.781698, -4.401810],
+    "weight": "300 Kg de resíduos coletados",
+    "dead": [
+    ],
+    "comparation": [
+    ]
+  },
+
+  {
+    "name": "Aracati: Quixadá, Canoa Quebrada e Majorlândia",
+    "coord": [-37.7065, -4.5275],
+    "weight": "3 Ton de resíduos coletados",
+    "dead": [
+    ],
+    "comparation": [
+      { "kind": "fusca 1600", "amount": 4 }
+    ]
+  },
+
+  {
+    "name": "Icapuí: Ponta Grossa, Melancias, Picos, Barreiras, Redonda e Peroba",
+    "coord": [-37.499815, -4.629261],
+    "weight": "800 Kg de resíduos coletados",
+    "dead": [
+    ],
+    "comparation": [
+      { "kind": "fusca 1600", "amount": 1 }
     ]
   }
 
