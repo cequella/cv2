@@ -1,6 +1,7 @@
 [
   {
-    "name": "Caucaia: Cumbuco e Barra do Cauípe",
+    "name": "Caucaia",
+    "beachs": "Cumbuco e Barra do Cauípe",
     "coord": [-38.7499, -3.6196],
     "weight": "15.7 toneladas",
     "dead": [
@@ -13,6 +14,7 @@
 
   {
     "name": "Amontada",
+    "beachs": "Icaraí",
     "coord": [-39.654319, -3.024158],
     "weight": "4 Kg de resíduos de óleo",
     "dead": [
@@ -22,7 +24,8 @@
   },
 
   {
-    "name": "Barroquinha: Bitupitá",
+    "name": "Barroquinha",
+    "beachs": "Bitupitá",
     "coord": [-41.273404, -2.8933544],
     "weight": "Não quantificada",
     "dead": [
@@ -32,7 +35,8 @@
   },
 
   {
-    "name": "Jericoacoara: Praia da Malhada",
+    "name": "Jericoacoara",
+    "beachs": "Praia da Malhada",
     "coord": [-40.51819, -2.790211],
     "weight": "Não quantificada",
     "dead": [
@@ -43,7 +47,8 @@
   },
 
   {
-    "name": "Paraipaba: Praia da Lagoinha",
+    "name": "Paraipaba",
+    "beachs": "Praia da Lagoinha",
     "coord": [-39.141380, -3.345373],
     "weight": "Não quantificada",
     "dead": [
@@ -53,7 +58,8 @@
   },
 
   {
-    "name": "Paracuru: Praia do Paracuru",
+    "name": "Paracuru",
+    "beachs": "Praia do Paracuru",
     "coord": [-39.031123, -3.407415],
     "weight": "1 tonelada",
     "dead": [
@@ -65,7 +71,8 @@
   },
 
   {
-    "name": "São Gonçalo do Amarante: Praia da Taíba",
+    "name": "São Gonçalo do Amarante",
+    "beachs": "Praia da Taíba",
     "coord": [-38.894677, -3.506282],
     "weight": "Não quantificada",
     "dead": [
@@ -77,7 +84,8 @@
   },
 
   {
-    "name": "Fortaleza: Praia do Futuro, Sabiaguaba e Cofeco",
+    "name": "Fortaleza",
+    "beachs": "Praia do Futuro, Sabiaguaba e Cofeco",
     "coord": [-38.460092, -3.724030],
     "weight": "500 litros de resíduos coletados",
     "dead": [
@@ -88,7 +96,8 @@
   },
 
   {
-    "name": "Aquiraz: Praia da Prainha, Barro Preto e Praia do Japão",
+    "name": "Aquiraz",
+    "beachs": "Praia da Prainha, Barro Preto e Praia do Japão",
     "coord": [-38.348813, -3.897001],
     "weight": "Não quantificada",
     "dead": [
@@ -98,7 +107,8 @@
   },
 
   {
-    "name": "Cascavel: Caponga e Barra Velha",
+    "name": "Cascavel",
+    "beachs": "Caponga e Barra Velha",
     "coord": [-38.197936, -4.037994],
     "weight": "Não quantificada",
     "dead": [
@@ -108,7 +118,8 @@
   },
 
   {
-    "name": "Beberibe: Morro Branco, Barra de Sucatinga, Parajuru, Tabubinha e Praia das Fontes",
+    "name": "Beberibe",
+    "beachs": "Morro Branco, Barra de Sucatinga, Parajuru, Tabubinha e Praia das Fontes",
     "coord": [-37.868942, -4.369748],
     "weight": "100 Kg de resíduos coletados",
     "dead": [
@@ -119,7 +130,8 @@
   },
 
   {
-    "name": "Fortim: Pontal de Maceió",
+    "name": "Fortim",
+    "beachs": "Pontal de Maceió",
     "coord": [-37.781698, -4.401810],
     "weight": "300 Kg de resíduos coletados",
     "dead": [
@@ -129,7 +141,8 @@
   },
 
   {
-    "name": "Aracati: Quixadá, Canoa Quebrada e Majorlândia",
+    "name": "Aracati",
+    "beachs": "Quixadá, Canoa Quebrada e Majorlândia",
     "coord": [-37.7065, -4.5275],
     "weight": "3 Ton de resíduos coletados",
     "dead": [
@@ -140,7 +153,8 @@
   },
 
   {
-    "name": "Icapuí: Ponta Grossa, Melancias, Picos, Barreiras, Redonda e Peroba",
+    "name": "Icapuí",
+    "beachs": "Ponta Grossa, Melancias, Picos, Barreiras, Redonda e Peroba",
     "coord": [-37.499815, -4.629261],
     "weight": "800 Kg de resíduos coletados",
     "dead": [
