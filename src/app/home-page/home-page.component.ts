@@ -95,10 +95,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       let beachName = bla.target.name;
       let marker = this.data.filter(x => x.name === beachName)[0];
 
-      debugger;
       this.map.removeLayer("target");
 
-      debugger;
       this.data = this.data.filter(x => x.name != beachName);
       this.onContentLoad();
     }
@@ -157,7 +155,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     }
 
     new mapboxgl.Popup({
-      closeButton: false
+      closeButton: false,
+      minWidth: 240,
     }).setLngLat(occurrence.coord)
       .setHTML(`
         <h1>${occurrence.name}</h1>
