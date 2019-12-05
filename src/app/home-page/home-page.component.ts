@@ -33,7 +33,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   @ViewChild('featureScreen', {static: false}) featureScreen: ElementRef;
 
   map: any;
-  popup: any;
 
   data: Occurrence[];
 
@@ -42,7 +41,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     let getter = this.http.get('assets/target.json').toPromise().then(
       (content) => {
-        this.data = content;
+        this.data = <Occurrence[]>content;
         this.onContentLoad();
       }
     ).catch(
@@ -59,10 +58,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       zoom: 7,
       minZoom: 0,
       maxZoom: 18,
-    });
-
-    this.popup = new mapboxgl.Popup({
-      closeButton: false
     });
 
     this.map.addControl(new ZoomControl(), 'top-right');
@@ -108,15 +103,17 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
     this.map.on('click', layerName,
       (event) => {
-        let a = this.map.queryRenderedFeatures(event.point, { layers: [layerName] });
-        console.log(a[0]);
+        let targetInfo = this.map.queryRenderedFeatures(event.point, { layers: [layerName] });
+        this.showOilContent(targetInfo[0].properties.marker);
     });
   }
 
   private mapTargetToIcon(target: Occurrence) {
     return {
       type: "Feature",
-      properties: <Occurrence>target,
+      properties: {
+        marker: target
+      },
       geometry: {
         type: "Point",
         coordinates: target.coord
@@ -124,24 +121,29 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     };
   }
 
-  private showOilContent(occurrence: Occurrence) {
+  private showOilContent(markerData) {
+    let occurrence = <Occurrence>JSON.parse(markerData); // Gambiarra
+
     console.log(occurrence);
-    /*
-    let comparation = occurrence.comparation
-                                  .map(x => "<il>"+x.amount+" "+x.kind+"</il>")
-                                  .reduce((o,c) => o+c);
-    this.popup
-      .setLngLat(occurrence.coord)
+
+    var comparation = "";
+    if(occurrence.comparation.length > 0) {
+      comparation = "<p><strong>Que equivalem a:</strong></p><ul>";
+      comparation += occurrence.comparation
+                                .map(x => "<il>"+x.amount+" "+x.kind+"</il>")
+                                .reduce((o,c) => o+c);
+      comparation += "</ul>";
+    }
+
+    new mapboxgl.Popup({
+      closeButton: false
+    }).setLngLat(occurrence.coord)
       .setHTML(`
         <h1>${occurrence.name}</h1>
-        <p><strong>Quantidade:</strong> ${occurrence.weight} ton</p>
-        <p><strong>Que equivalem a:</strong></p>
-        <ul>
+        <p><strong>Quantidade:</strong> ${occurrence.weight}</p>
         ${comparation}
-        </ul>
         <button>Limpar</button>
         `)
       .addTo(this.map);
-      */
   }
 }
