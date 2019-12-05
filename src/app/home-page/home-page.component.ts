@@ -53,7 +53,8 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     mapboxgl.accessToken = environment.apiKey;
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v9',
+      //style: 'mapbox://styles/mapbox/streets-v9',
+      style: 'mapbox://styles/jfilipedias/ck3nc19d25gre1cqpyqpdpm4r',
       center: [-38.7499, -3.6196],
       zoom: 7,
       minZoom: 0,
@@ -72,7 +73,17 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   }
 
   onContentLoad() {
-    let link = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png';
+    //let link = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Cat_silhouette.svg/400px-Cat_silhouette.svg.png';
+    /*
+    let min = 1;
+    let max = 5;
+
+    let temp = this.data.map(
+      x => Math.floor(Math.random() * (max - min)) + min
+    );
+    */
+
+    let link = 'assets/Mancha 1.png';
     this.map.loadImage(link,
       (error, image) => {
         if (error) throw error;
@@ -96,7 +107,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       },
       layout: {
         "icon-image": layerName,
-        "icon-size": 0.25,
+        "icon-size": 0.1,
         "icon-allow-overlap": true
       }
     });
