@@ -36,6 +36,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   map: any;
   image: any;
+  popup: any;
 
   data: Occurrence[];
 
@@ -56,8 +57,9 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     mapboxgl.accessToken = environment.apiKey;
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v9',
+      //style: 'mapbox://styles/mapbox/streets-v9',
       //style: 'mapbox://styles/jfilipedias/ck3nc19d25gre1cqpyqpdpm4r',
+      style: 'mapbox://styles/cequella/ck3ta36hc3n8l1cscwdcnfsdp',
       center: [-38.7499, -3.6196],
       zoom: 7,
       minZoom: 0,
@@ -82,7 +84,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
         (error, image) => {
           if (error) throw error;
           this.image = image;
-          this.map.addImage("target", this.image);
+          this.map.addImage("stain1", this.image);
           this.createOilStain()
         });
     } else {
@@ -92,54 +94,55 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 
   @HostListener('click', ['$event']) onMarkerClick(bla) {
     if(bla.target.id == 'clean') {
-      let beachName = bla.target.name;
-      let marker = this.data.filter(x => x.name === beachName)[0];
-
-      this.map.removeLayer("target");
-
-      this.data = this.data.filter(x => x.name != beachName);
-      this.onContentLoad();
+      this.map.removeLayer(bla.target.name);
+      this.popup.remove();
     }
   }
 
   private createOilStain() {
-    var temp = this.data.map(target => this.mapTargetToIcon(target));
+    this.data.map(
+      (current) => {
+        this.mapTargetToIcon(current);
+      }
+    );
+  }
 
-    this.map.addLayer({
-      id: "target",
+  private mapTargetToIcon(target: Occurrence) {
+    let layer = {
+      id: target.name,
       type: "symbol",
       source: {
         type: "geojson",
         data: {
           type: "FeatureCollection",
-          features: temp
+          features: [
+            {
+              type: "Feature",
+              properties: {
+                marker: target
+              },
+              geometry: {
+                type: "Point",
+                coordinates: target.coord
+              },
+            }
+          ]
         }
       },
       layout: {
-        "icon-image": "target",
+        "icon-image": "stain1",
         "icon-size": 0.1,
         "icon-allow-overlap": true
       }
-    });
-
-    this.map.on('click', "target",
-      (event) => {
-        let targetInfo = this.map.queryRenderedFeatures(event.point, { layers: ["target"] });
-        this.showOilContent(targetInfo[0].properties.marker);
-    });
-  }
-
-  private mapTargetToIcon(target: Occurrence) {
-    return {
-      type: "Feature",
-      properties: {
-        marker: target
-      },
-      geometry: {
-        type: "Point",
-        coordinates: target.coord
-      },
     };
+
+    this.map.addLayer(layer);
+
+    this.map.on('click', target.name,
+    (event) => {
+      let targetInfo = this.map.queryRenderedFeatures(event.point, { layers: [target.name] });
+      this.showOilContent(targetInfo[0].properties.marker);
+    });
   }
 
   private showOilContent(markerData) {
@@ -154,7 +157,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
       comparation += "</p>";
     }
 
-    new mapboxgl.Popup({
+    this.popup = new mapboxgl.Popup({
       closeButton: false,
       minWidth: 240,
     }).setLngLat(occurrence.coord)
